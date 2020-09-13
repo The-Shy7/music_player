@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {
   Button,
@@ -59,12 +58,12 @@ function Header() {
 }
 
 function MusicInfo() {
-  let artist = "SHY Martin"
-  let title = "Good Together"
+  let artist = "Asian Kung-Fu Generation"
+  let title = "After Dark"
 
   return (
     <div className="MusicInfo">
-      <img src="https://m.media-amazon.com/images/I/91EADvEUjXL._SS500_.jpg" className="img-coverart" />
+      <img src="https://m.media-amazon.com/images/I/81y3mERiotL._SS500_.jpg" className="img-coverart" />
       <div className="txt-subtitle">{artist}</div>
       <div className="txt-title">{title}</div>
     </div>
