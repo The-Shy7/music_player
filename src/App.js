@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './App.css';
 import {
   Button,
@@ -6,7 +6,8 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  Slider
+  Slider, 
+  Progress
 } from "shards-react";
 import {
   FiChevronLeft,
@@ -74,6 +75,17 @@ function MusicInfo() {
 function Controller() {
   const audioManager = useRef();
   const [play, setPlay] = useState(false);
+  const [progress, setProgress] = useState(0.0);
+
+  useEffect(() => {
+    audioManager.current.addEventListener('timeupdate', updateProgress);
+  }, [])
+
+  useEffect(() => {
+    return () => {
+      audioManager.current.removeEventListener('timeupdate', updateProgress);
+    }
+  }, [])
 
   function togglePlay() {
     setPlay(!play)
@@ -82,6 +94,15 @@ function Controller() {
     } else {
       audioManager.current.pause();
     } 
+  }
+
+  function updateProgress() {
+    const { duration, currentTime } = audioManager.current;
+    console.log(currentTime);
+    console.log(duration);
+    console.log(currentTime / duration);
+    setProgress((currentTime / duration) * 100);
+    console.log(progress);
   }
 
   return (
@@ -102,6 +123,7 @@ function Controller() {
           <Button pill theme="light" className="btn-control"><FiSkipForward className="icon" /></Button>
       </div>
         <Slider connect={[true, false]} start={[20]} range={{ min: 0, max: 100 }} />
+        <Progress value={progress} />
     </div>  
   );
 }
