@@ -12,6 +12,7 @@ import {
   FiChevronLeft,
   FiPlus,
   FiPlay,
+  FiPause,
   FiSkipBack,
   FiSkipForward,
   FiShuffle,
@@ -20,8 +21,6 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css"
 import Playlist from "./Playlist.js";
-import testaudio from './assets/audio/After Dark.mp3';
-import testaudio2 from './assets/audio/Instant Crush.mp3';
 
 function App() {
   return (
@@ -68,63 +67,87 @@ function Controller() {
   const [play, setPlay] = useState(false);
   const [progress, setProgress] = useState(0.0);
   const [activeSong, setActiveSong] = useState(0);
+  const [starttime, setStarttime] = useState('0:00');
 
+  // handle skip forward button 
   function nextSong() {
     console.log("next song");
     
     if (index < Playlist.length - 1) {
-      console.log(index);
       setIndex(index + 1);
-      console.log(index);
-    } 
+      setPlay(true);
+    } else {
+      setPlay(false);
+      setIndex(0);
+    }
   }
 
+  // handle skip backward button
   function prevSong() {
     console.log("prev song");
-    if (progress > 10) {
+
+    if (progress > 10 || index === 0) {
       audio.currentTime = 0;
     } else if (index > 0) {
-      console.log(index);
       setIndex(index - 1);
-      console.log(index);
     } 
+    
+    setPlay(true);
   }
 
+  // when index is updated, change the active song and 
+  // attach new event listeners
   useEffect(() => {
     setActiveSong(Playlist[index]);
     setAudioSrc(Playlist[index].src);
     audio.addEventListener('timeupdate', updateProgress);
-    audio.addEventListener('ended', () => setPlay(false));
+    audio.addEventListener('ended', nextSong);
     return () => {
       audio.removeEventListener('timeupdate', updateProgress);
-      audio.removeEventListener('ended', () => setPlay(false));
+      audio.removeEventListener('ended', nextSong);
     };
   }, [index])
 
+  // when audioSrc is updated, update the audio src and play
   useEffect(() => {
     audio.src = audioSrc;
     audio.currentTime = 0;
     if (play) audio.play();
   }, [audioSrc])
 
+  // when play is updated, play/pause music accordingly
   useEffect(() => {
     play ? audio.play() : audio.pause();
   }, [play])
 
+  // toggle play true/false
   function togglePlay() {
     setPlay(!play);
   }
 
+  // update progress in accordance to audio's currentTime
   function updateProgress() {
     const duration = audio.duration;
     const currentTime = audio.currentTime;
     setProgress((currentTime / duration) * 100 || 0);
+    setStarttime(formatTime(currentTime));
   }
 
+  // handle progress slider input
   function adjustProgress(e) {
     const newTime = audio.duration * (parseFloat(e[0]) / 100);
     audio.currentTime = newTime;
     setProgress(parseFloat(e[0]) / 100);
+  }
+
+  function formatTime(time) {
+    if (isNaN(time) || time === 0) {
+      return '0:00';
+    }
+
+    const mins = Math.floor(time / 60);
+    const secs = (time % 60).toFixed();
+    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
   }
 
   return (
@@ -143,7 +166,8 @@ function Controller() {
         <button className="btn-play"
           onClick={togglePlay}
         >
-          <FiPlay className="largeicon" />
+          {play === false && <FiPlay className="playicon" />}
+          {play === true && <FiPause className="largeicon" />}
         </button>
         <button 
           className="btn-control"
@@ -157,6 +181,10 @@ function Controller() {
         connect={[true, false]}
         range={{ min: 0, max: 100 }}
       />
+      <div className="time-row">
+        <div className="left-time">{starttime}</div>
+        <div className="right-time">{formatTime(audio.duration)}</div>
+      </div>
     </div>  
   );
 }
