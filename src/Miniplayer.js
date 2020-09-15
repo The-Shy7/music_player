@@ -7,17 +7,11 @@ import { Link } from 'react-router-dom';
 
 const Miniplayer = () => {
     const {
-        nextSong,
-        prevSong,
         togglePlay,
-        adjustProgress,
-        progress,
         activeSong,
-        starttime,
-        play,
-        audio,
-        formatTime
+        play
     } = useAudio();
+    
     const { data, loading, error } = usePalette(activeSong.cover)
 
     return (
