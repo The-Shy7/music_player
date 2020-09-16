@@ -4,7 +4,7 @@ const imagedir = '../assets/images/';
 export const info = {
     name: 'Liked Songs',
     cover: imagedir + 'Flow.jpg',
-    author: 'Tahmin Talukder'
+    author: 'Raj'
 };
 
 export const tracks = [

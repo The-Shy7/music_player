@@ -1,13 +1,14 @@
 .App {
   text-align: center;
+  font-family: Futura PT;
 }
 
 /* Text Styles */
 
 .txt-label {
-  padding: 5px 10px 5px 3px;
+  padding: 5px 0px 5px 3px;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: bolder;
 }
 
 .txt-title {
@@ -48,19 +49,39 @@ button:focus {
   box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.btn-icon {
+.btn-topicon {
+  background-color: rgba(0,0,0,0);
+  border: none;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.btn-righticon {
+  margin-left: auto;
+  margin-right: 5px;
   background-color: rgba(0,0,0,0);
   border: none;
   padding: 0px;
+  width: 1.2rem;
+  height: 1.2rem;
+  z-index: 2001;
+}
+
+.btn-icon {
+  background-color: rgba(0,0,0,0);
+  border: none;
+  width: 3.3rem;
+  height: 3.3rem;
 }
 
 .icon {
   font-size: 1.5rem;
   color: rgb(116,116,116);
+  transition: transform 0.5s;
 }
 
 .largeicon {
-  font-size: 2.2rem;
+  font-size: 2rem;
   color: white;
   margin-left: 4px;
 }
@@ -82,10 +103,6 @@ button:focus {
   align-items: center;
   justify-content: flex-start;
   height: 6rem;
-}
-
-.dropdown-plus {
-  margin-left: auto;
 }
 
 /* MusicInfo Styles */
@@ -125,11 +142,18 @@ button:focus {
   align-items: center;
 } 
 
+@keyframes dropdown {
+  from {height: 0px;}
+  to {height: 200px;}
+}
+
 .droptest {
+  animation-name: dropdown;
+  animation-duration: 0.5s;
   position: absolute;
   top: 30px;
-  right: 40px;
-  z-index: 100;
+  right: 18px;
+  z-index: 2000;
   height: 200px;
   width: 200px;
   border-radius: 25px;
@@ -139,7 +163,8 @@ button:focus {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 30px 20px 15px 20px;
+  padding: 45px 20px 15px 20px;
+  overflow: hidden;
 }
 
 .drop-button-container {
@@ -235,6 +260,8 @@ button:focus {
 .btn-miniplayericon {
   background-color: rgba(0,0,0,0);
   border: none;
+  width: 2rem;
+  height: 4rem;
   margin-left: auto;
   margin-right: 10px;
 }
