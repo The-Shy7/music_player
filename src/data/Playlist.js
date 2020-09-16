@@ -42,5 +42,12 @@ export const tracks = [
         title: 'Shunkan Sentimental',
         artist: ['SCANDAL'],
         album: 'Temptation Box'
+    },
+    {
+        src: audiodir + 'Mikazuki.mp3',
+        cover: imagedir + 'Mikazuki.jpg',
+        title: 'Mikazuki',
+        artist: ['Sayuri'],
+        album: 'Mikazukinokoukai'
     }
 ];
