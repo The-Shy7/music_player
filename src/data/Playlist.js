@@ -49,5 +49,12 @@ export const tracks = [
         title: 'Mikazuki',
         artist: ['Sayuri'],
         album: 'Mikazukinokoukai'
+    },
+    {
+        src: audiodir + 'Kids.mp3',
+        cover: imagedir + 'Kids.jpg',
+        title: 'Kids',
+        artist: ['MGMT'],
+        album: 'Oracular Spectacular'
     }
 ];
