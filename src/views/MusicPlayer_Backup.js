@@ -20,8 +20,10 @@ import {
   FiShuffle,
   FiRepeat
 } from "react-icons/fi";
-import Playlist from "./Playlist";
-import { MusicContext } from "./MusicContext"
+import Playlist from "../data/Playlist";
+import { MusicContext } from "../MusicContext"
+
+// backup of MusicPlayer without using a custom hook
 
 const Header = () => {
   const [open, setOpen] = useState(false)
