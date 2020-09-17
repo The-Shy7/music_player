@@ -18,7 +18,7 @@ export const tracks = [
 ];
 
 export const playlists = {
-    'liked-songs': {
+    'raj-liked-songs': {
         info: {
             name: 'Liked Songs',
             cover: imagedir + 'Flow.jpg',
@@ -34,7 +34,7 @@ export const playlists = {
             songs["kids"]
         ]
     },
-    'anime':{
+    'raj-anime':{
         info: {
             name: 'Anime',
             cover: imagedir + 'House.jpg',
