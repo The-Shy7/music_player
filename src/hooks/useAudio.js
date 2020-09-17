@@ -48,19 +48,20 @@ const useAudio = () => {
     }, [state.index])
 
     // when audioSrc is updated, update the audio src and play
-    function changeTrack(i) {
-        setState(state => ({ ...state, index: i, activeSong: state.tracks[i], audioSrc: state.tracks[i].src, play: true }));
-        state.audio.src = state.tracks[i].src;
-        state.audio.currentTime = 0;
-        state.audio.play();
-    }
-
-    function setPlaylist(n) {
-        console.log('change to playlist ' + n);
+    function changeTrack(n, i) {
         if (state.playlistInfo.id !== n) {
+            console.log('change to playlist ' + n);
             setState(state => ({ ...state, tracks: state.playlists[n].tracks, playlist: state.playlists[n], playlistInfo: state.playlists[n].info }));
+            setState(state => ({ ...state, index: i, activeSong: state.playlists[n].tracks[i], audioSrc: state.playlists[n].tracks[i].src, play: true }));
+            state.audio.src = state.playlists[n].tracks[i].src;
+            state.audio.currentTime = 0;
+            state.audio.play();
         } else {
             console.log('same playlist');
+            setState(state => ({ ...state, index: i, activeSong: state.tracks[i], audioSrc: state.tracks[i].src, play: true }));
+            state.audio.src = state.tracks[i].src;
+            state.audio.currentTime = 0;
+            state.audio.play();
         }
     }
 
@@ -122,7 +123,6 @@ const useAudio = () => {
         toggleShuffle,
         formatTime,
         setRepeat,
-        setPlaylist,
         progress: state.progress,
         activeSong: state.activeSong,
         starttime: state.starttime,
