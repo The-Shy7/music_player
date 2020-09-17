@@ -15,10 +15,11 @@ const Miniplayer = () => {
         activeSong,
         play,
         playlist,
+        playlistInfo,
         index
     } = useAudio();
     
-    const { data } = usePalette(playlist.cover)
+    const { data } = usePalette(playlistInfo.cover)
 
     return (
         <div className="miniplayer-container" style={{ display: index < 0 ? 'none' : 'block' }}>
