@@ -20,6 +20,7 @@ export const tracks = [
 export const playlists = {
     'raj-liked-songs': {
         info: {
+            id: 'raj-liked-songs',
             name: 'Liked Songs',
             cover: imagedir + 'Flow.jpg',
             author: 'Raj'
@@ -36,6 +37,7 @@ export const playlists = {
     },
     'raj-anime':{
         info: {
+            id: 'raj-anime',
             name: 'Anime',
             cover: imagedir + 'House.jpg',
             author: 'Raj'

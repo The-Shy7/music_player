@@ -10,6 +10,7 @@ const ProgressSlider = ({ color, accent }) => {
         adjustProgress,
         formatTime
     } = useAudio();
+
     const [scrubProgress, setScrubProgress] = useState(progress);
     const [scrubbing, setScrubbing] = useState(false);
 

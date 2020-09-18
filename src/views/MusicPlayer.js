@@ -20,10 +20,10 @@ import {
   FiShuffle,
   FiRepeat
 } from "react-icons/fi";
-import useAudio from "../hooks/useAudio";
-import ProgressSlider from "../components/ProgressSlider"
 import { usePalette } from 'react-palette';
 import { Link, useHistory } from 'react-router-dom';
+import ProgressSlider from "../components/ProgressSlider"
+import useAudio from "../hooks/useAudio";
 
 const MusicPlayer = () => {
   const {
@@ -38,7 +38,6 @@ const MusicPlayer = () => {
     shuffle,
     repeat
   } = useAudio();
-  
   const { data } = usePalette(activeSong.cover)
   const [open, setOpen] = useState(false)
   let history = useHistory();
