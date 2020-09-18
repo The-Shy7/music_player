@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import '../App.css';
-import "bootstrap/dist/css/bootstrap.min.css";
-import "shards-ui/dist/css/shards.min.css";
+// import '../MusicPlayerM.css';
+import '../MusicPlayer.css';
 import PlayIcon from '../assets/icons/play.svg';
 import SkipForwardIcon from '../assets/icons/skipforward.svg';
 import SkipBackwardIcon from '../assets/icons/skipbackward.svg';
@@ -10,18 +10,9 @@ import RepeatIcon from '../assets/icons/repeat.svg';
 import BackIcon from '../assets/icons/back.svg';
 import PlusIcon from '../assets/icons/plus.svg';
 import PauseIcon from '../assets/icons/pause.svg';
-import {
-  FiChevronLeft,
-  FiPlus,
-  FiPlay,
-  FiPause,
-  FiSkipBack,
-  FiSkipForward,
-  FiShuffle,
-  FiRepeat
-} from "react-icons/fi";
 import { usePalette } from 'react-palette';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import { ThemeContext } from '../ThemeContext';
 import ProgressSlider from "../components/ProgressSlider"
 import useAudio from "../hooks/useAudio";
 
@@ -38,9 +29,15 @@ const MusicPlayer = () => {
     shuffle,
     repeat
   } = useAudio();
-  const { data } = usePalette(activeSong.cover)
-  const [open, setOpen] = useState(false)
+
+  const [theme, setTheme] = useContext(ThemeContext);
+  const { data } = usePalette(activeSong.cover);
+  const [open, setOpen] = useState(false);
   let history = useHistory();
+
+  useEffect(()=> {
+    
+  }, []);
 
   function toggle() {
     setOpen(!open);
@@ -69,7 +66,7 @@ const MusicPlayer = () => {
 
   return (
     <>
-      <div className="Header">
+      <div className="MusicPlayerHeader">
         <button className="btn-topicon"
           onClick={()=> history.goBack()}
         >
@@ -91,7 +88,7 @@ const MusicPlayer = () => {
       <div className="AlbumContainer">
         <img src={activeSong.cover} className="img-coverart" alt="cover art" />
       </div>
-      <div style={{ backgroundImage: 'radial-gradient(at 50% bottom ,' + data.lightMuted + ', rgba(255, 255, 255, 1), rgba(255, 255, 255, 0))' }} className="Controller">
+      <div style={{ backgroundImage: theme.theme === 'light' ? 'radial-gradient(at 50% bottom ,' + data.lightMuted + ', rgba(255, 255, 255, 0), rgba(255, 255, 255, 0))' : 'linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))' }} className="Controller">
         <div className="txt-subtitle">{activeSong.artist.join(', ')}</div>
         <div className="txt-title">{activeSong.title}</div>
         <div className="control-row">
