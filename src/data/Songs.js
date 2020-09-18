@@ -57,5 +57,53 @@ export const songs = {
         title: 'Kids',
         artist: ['MGMT'],
         album: 'Oracular Spectacular'
+    },
+    'about-us': {
+        id: 'about-us',
+        src: audiodir + 'AboutUs.mp3',
+        cover: imagedir + 'Musique.jpg',
+        title: 'Something About Us',
+        artist: ['Daft Punk'],
+        album: 'Musique Vol. 1 1993–2005'
+    },
+    'dance': {
+        id: 'dance',
+        src: audiodir + 'DANCE.mp3',
+        cover: imagedir + 'Justice.jpg',
+        title: 'D.A.N.C.E.',
+        artist: ['Justice'],
+        album: 'Justice'
+    },
+    'feather': {
+        id: 'feather',
+        src: audiodir + 'Feather.mp3',
+        cover: imagedir + 'Luv(Sic)Part3.jpg',
+        title: 'Feather (feat. Cise Starr & Akin)',
+        artist: ['Nujabes'],
+        album: 'Modal Soul'
+    },
+    'hill': {
+        id: 'hill',
+        src: audiodir + 'Hill.mp3',
+        cover: imagedir + 'Plastic.jpg',
+        title: 'On Melancholy Hill',
+        artist: ['Gorillaz'],
+        album: 'Plastic Beach'
+    },
+    'say-hello': {
+        id: 'say-hello',
+        src: audiodir + 'SayHello.mp3',
+        cover: imagedir + 'SoftCell.jpg',
+        title: 'Say Hello, Wave Goodbye',
+        artist: ['Soft Cell'],
+        album: 'Non-Stop Erotic Cabaret'
+    },
+    'trampoline': {
+        id: 'trampoline',
+        src: audiodir + 'Trampoline.mp3',
+        cover: imagedir + 'Trampoline.jpg',
+        title: 'Trampoline',
+        artist: ['Kero Kero Bonito'],
+        album: 'Bonito Generation'
     }
 };

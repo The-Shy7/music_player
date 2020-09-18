@@ -14,7 +14,13 @@ export const tracks = [
     songs["luv-sic"],
     songs["shunkan-sent"],
     songs["mikazuki"],
-    songs["kids"]
+    songs["kids"],
+    songs["about-us"],
+    songs["dance"],
+    songs["feather"],
+    songs["hill"],
+    songs["say-hello"],
+    songs["trampoline"]
 ];
 
 export const playlists = {
@@ -32,7 +38,13 @@ export const playlists = {
             songs["luv-sic"],
             songs["shunkan-sent"],
             songs["mikazuki"],
-            songs["kids"]
+            songs["kids"],
+            songs["about-us"],
+            songs["dance"],
+            songs["feather"],
+            songs["hill"],
+            songs["say-hello"],
+            songs["trampoline"]
         ]
     },
     'raj-anime':{
