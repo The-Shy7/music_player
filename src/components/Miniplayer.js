@@ -19,7 +19,7 @@ const Miniplayer = () => {
         index
     } = useAudio();
 
-    const { data } = usePalette(playlistInfo.cover)
+    const { data } = usePalette(playlist.cover)
     let history = useHistory();
 
     return (

@@ -7,6 +7,7 @@ import { Link, useLocation, useHistory } from 'react-router-dom';
 import FilterResults from 'react-filter-search';
 import Miniplayer from '../components/Miniplayer';
 import useAudio from "../hooks/useAudio";
+import { useCloud } from "../hooks/useCloud";
 
 const ListMenu = () => {
     const {
@@ -14,14 +15,18 @@ const ListMenu = () => {
         activeSong,
         playlist,
         playlists,
-        playlistInfo,
         tracks,
         index
     } = useAudio();
-    
-    const { data } = usePalette(playlistInfo.cover);
+
+    const { data } = usePalette(playlist.cover);
     const { pathname } = useLocation();
-    const [activePlaylist] = useState(playlists[pathname.substring(1, pathname.length)]);
+    const [activePlaylist, setActivePlaylist] = useState(playlists[pathname] || playlists["fCgiiouoAYWMsCWzRxVa"]);
+
+    useEffect(()=> {
+        console.log("ACTIVE PLAYLIST:", activePlaylist);
+    }, [activePlaylist])
+    
 
     return (
         <>
@@ -35,10 +40,10 @@ const ListMenu = () => {
             </div>
             <div className="playlisttop-wrapper">
                 <div className="playlistinfo-container">
-                    <img src={activePlaylist.info.cover} alt="Playlist Cover" className="playlist-cover" />
+                    <img src={activePlaylist.cover} alt="Playlist Cover" className="playlist-cover" />
                     <div className="playlist-info" >
-                        <div className="txt-playlistinfo">By {activePlaylist.info.author}</div>
-                        <div className="txt-playlisttitle">{activePlaylist.info.name}</div>
+                        <div className="txt-playlistinfo">By {activePlaylist.author}</div>
+                        <div className="txt-playlisttitle">{activePlaylist.name}</div>
                         <div className="txt-playlistinfo">{activePlaylist.tracks.length} Songs</div>
                     </div>
                 </div>
@@ -47,7 +52,7 @@ const ListMenu = () => {
                 </div>
             </div>
             <div className="track-list">
-                {activePlaylist.tracks.map((track, i) =>
+                {tracks.map((track, i) =>
                     <Song key={track.id} i={i} track={track} curtrack={activeSong} data={data} curPlaylist={playlist} activePlaylist={activePlaylist} changeTrack={changeTrack} />
                 )}
                 <div style={{ marginBottom: index < 0 ? '2rem' : '8rem' }} >
@@ -63,10 +68,10 @@ const Song = ({ i, track, curtrack, data, curPlaylist, activePlaylist, changeTra
         <div>
             <button className="track-container" 
                 onClick={() => {
-                    changeTrack(activePlaylist.info.id, i);
+                    changeTrack(activePlaylist.id, i);
                 }}
             >
-                <div className="txt-tracktitle" style={track.title == curtrack.title && curPlaylist.info.id == activePlaylist.info.id ? { color: data.vibrant } : {}}>{track.title}</div>
+                <div className="txt-tracktitle" style={track.title == curtrack.title && curPlaylist.id == activePlaylist.id ? { color: data.vibrant } : {}}>{track.title}</div>
                 <div className="txt-trackinfo">{track.artist.join(', ')} | {track.album}</div>
             </button>
         </div>
