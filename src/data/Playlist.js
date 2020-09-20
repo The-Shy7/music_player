@@ -24,8 +24,8 @@ export const tracks = [
 ];
 
 export const playlists = {
-    'fCgiiouoAYWMsCWzRxVa': {
-        id: 'raj-liked-songs',
+    'default': {
+        id: 'default',
         name: 'Liked Songs',
         cover: imagedir + 'Flow.jpg',
         author: 'Raj',
@@ -43,18 +43,6 @@ export const playlists = {
             songs["hill"],
             songs["say-hello"],
             songs["trampoline"]
-        ]
-    },
-    'raj-anime':{
-        id: 'raj-anime',
-        name: 'Anime',
-        cover: imagedir + 'House.jpg',
-        author: 'Raj',
-        tracks: [
-            songs["after-dark"],
-            songs["alones"],
-            songs["shunkan-sent"],
-            songs["mikazuki"]
         ]
     }
 };

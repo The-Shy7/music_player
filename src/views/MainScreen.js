@@ -9,11 +9,8 @@ import { useCloud } from "../hooks/useCloud";
 
 const MainScreen = () => {
   const {
-    changeTrack,
-    activeSong,
     playlist,
     playlists,
-    tracks,
     index
   } = useAudio();
 
@@ -53,7 +50,10 @@ const Playlist = ({ i, id, playlist, curplaylist, data }) => {
   return (
     <div>
       <button
-        onClick={() => history.push('/' + id)}
+        onClick={() => {
+          
+          history.push('/' + id)
+        }}
         className="playlistlist-container"
         style={playlist.name === curplaylist.name ? { color: data.vibrant } : {}}
       >
@@ -78,7 +78,7 @@ const UploadForm = () => {
     artist, setArtist,
     album, setAlbum
   } = useCloud();
-
+  
   return (
     <>
       <div>
