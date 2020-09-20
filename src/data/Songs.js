@@ -2,6 +2,14 @@ const audiodir = '../assets/audio/';
 const imagedir = '../assets/images/';
 
 export const songs = {
+    'default': {
+        id: 'default',
+        src: audiodir + 'After Dark.mp3',
+        cover: imagedir + 'Placeholder.jpg',
+        title: 'default',
+        artist: ['default'],
+        album: 'default'
+    },
     'after-dark': {
         id: 'after-dark',
         src: audiodir + 'After Dark.mp3',

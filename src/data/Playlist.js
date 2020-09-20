@@ -26,23 +26,24 @@ export const tracks = [
 export const playlists = {
     'default': {
         id: 'default',
-        name: 'Liked Songs',
-        cover: imagedir + 'Flow.jpg',
-        author: 'Raj',
+        name: 'default',
+        cover: imagedir + 'Placeholder.jpg',
+        author: 'default',
         tracks: [
-            songs["after-dark"],
-            songs["instant-crush"],
-            songs["alones"],
-            songs["luv-sic"],
-            songs["shunkan-sent"],
-            songs["mikazuki"],
-            songs["kids"],
-            songs["about-us"],
-            songs["dance"],
-            songs["feather"],
-            songs["hill"],
-            songs["say-hello"],
-            songs["trampoline"]
+            // songs["after-dark"],
+            // songs["instant-crush"],
+            // songs["alones"],
+            // songs["luv-sic"],
+            // songs["shunkan-sent"],
+            // songs["mikazuki"],
+            // songs["kids"],
+            // songs["about-us"],
+            // songs["dance"],
+            // songs["feather"],
+            // songs["hill"],
+            // songs["say-hello"],
+            // songs["trampoline"]
+            songs["default"]
         ]
     }
 };
