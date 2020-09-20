@@ -16,7 +16,7 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig)
-store = firebase.firestore()
+const store = firebase.firestore()
 
 const MusicContext = React.createContext([{}, () => { }]);
 
@@ -84,7 +84,7 @@ const MusicProvider = (props) => {
 
   useEffect(() => {
     console.log("tracklist:", tracklist);
-
+    
     if (tracklist.length > 0) {
       setState({
         playlists: playlistlist,
