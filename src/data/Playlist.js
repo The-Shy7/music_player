@@ -28,6 +28,7 @@ export const playlists = {
         id: 'default',
         name: 'default',
         cover: imagedir + 'Placeholder.jpg',
+        thumbs: [imagedir + 'Placeholder.jpg', imagedir + 'Placeholder.jpg', imagedir + 'Placeholder.jpg'],
         author: 'default',
         tracks: [
             // songs["after-dark"],
