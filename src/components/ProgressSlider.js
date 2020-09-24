@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import '../App.css';
 import useAudio from "../hooks/useAudio";
+import '../styles/App.css';
 
 const ProgressSlider = ({ color, accent }) => {
     const {
@@ -10,7 +10,6 @@ const ProgressSlider = ({ color, accent }) => {
         adjustProgress,
         formatTime
     } = useAudio();
-
     const [scrubProgress, setScrubProgress] = useState(progress);
     const [scrubbing, setScrubbing] = useState(false);
 
@@ -26,11 +25,25 @@ const ProgressSlider = ({ color, accent }) => {
     return (
         <div className="progressslider-wrapper">
             <div className="progressslider-container">
-                <div className="progressslider-bar" style={{ width: scrubbing ? scrubProgress + '%' : progress + '%',  backgroundColor: scrubbing ? accent : 'white', backgroundImage: scrubbing ? 'linear-gradient(to right, ' + color + ', ' + accent + ')' : 'none' }}>
-                </div>
-                <input type="range" className="progressslider" step="0.01" onChange={scrub} onTouchEnd={scrub} />
+                <div className="progressslider-bar"
+                    style={{
+                        width: scrubbing ? scrubProgress + '%' : progress + '%',
+                        backgroundColor: scrubbing ? accent : 'white',
+                        backgroundImage: scrubbing ? 'linear-gradient(to right, ' + color + ', ' + accent + ')' : 'none' 
+                    }}
+                />
+                <input className="progressslider"
+                    type="range"
+                    step="0.01"
+                    onChange={scrub}
+                    onTouchEnd={scrub}
+                />
                 <div className="time-row">
-                    <div className="left-time" style={{ color: scrubbing ? 'white' : '' }}>{scrubbing ? formatTime(scrubProgress / 100 * audio.duration) : starttime}</div>
+                    <div className="left-time" 
+                        style={{ color: scrubbing ? 'white' : '' }}
+                    >
+                        {scrubbing ? formatTime(scrubProgress / 100 * audio.duration) : starttime}
+                    </div>
                     <div className="right-time">{formatTime(audio.duration)}</div>
                 </div>
             </div>

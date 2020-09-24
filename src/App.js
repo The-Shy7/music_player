@@ -1,24 +1,27 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter } from 'react-router-dom';
+import { MusicProvider } from "./contexts/MusicContext";
+import { ThemeProvider } from "./contexts/ThemeContext";
+import { DisplayProvider } from "./contexts/DisplayContext";
+import Main from "./Main";
+import './styles/App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css";
-import { MusicProvider } from "./MusicContext";
-import { ThemeProvider } from "./ThemeContext";
-import { BrowserRouter } from 'react-router-dom';
-import Main from "./Main";
 
 function App() {
-  return (
-    <div className="App">
-      <MusicProvider>
-        <ThemeProvider>
-          <BrowserRouter>
-            <Main />
-          </BrowserRouter>
-        </ThemeProvider>
-      </MusicProvider>
-    </div>
-  );
+    return (
+        <div className="App">
+            <MusicProvider>
+                <ThemeProvider>
+                    <DisplayProvider>
+                        <BrowserRouter>
+                            <Main />
+                        </BrowserRouter>
+                    </DisplayProvider>
+                </ThemeProvider>
+            </MusicProvider>
+        </div>
+    );
 }
 
 export default App;
